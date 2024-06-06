@@ -1,0 +1,648 @@
+#0 building with "default" instance using docker driver
+
+#1 [internal] load build definition from Containerfile.ubi
+#1 transferring dockerfile: 1.67kB done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602804a32480a052951021caf429494
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [1/3] FROM registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602804a32480a052951021caf429494
+#4 CACHED
+
+#5 [internal] load build context
+#5 transferring context: 2.25kB done
+#5 DONE 0.0s
+
+#6 [2/3] RUN  { yum -y module enable "postgresql:16" || :; } &&     dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm &&     INSTALL_PKGS="glibc-locale-source glibc-langpack-en rsync tar gettext bind-utils nss_wrapper postgresql16-server" &&     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS &&     rpm -V $INSTALL_PKGS &&     postgres -V | grep -qe "16\." && echo "Found VERSION 16" &&     dnf -y clean all --enablerepo='*' &&     localedef -f UTF-8 -i en_US en_US.UTF-8 &&     mkdir -p /var/lib/pgsql/data &&     chgrp -R 0 /var/lib/pgsql /var/run/postgresql && chmod -R g=u /var/lib/pgsql /var/run/postgresql
+#6 0.595 Updating Subscription Management repositories.
+#6 0.595 Unable to read consumer identity
+#6 0.598 
+#6 0.598 This system is not registered with an entitlement server. You can use subscription-manager to register.
+#6 0.598 
+#6 1.168 Red Hat Universal Base Image 9 (RPMs) - BaseOS  978 kB/s | 516 kB     00:00    
+#6 1.857 Red Hat Universal Base Image 9 (RPMs) - AppStre 3.5 MB/s | 2.1 MB     00:00    
+#6 2.608 Red Hat Universal Base Image 9 (RPMs) - CodeRea 664 kB/s | 274 kB     00:00    
+#6 2.770 Error: Problems in request:
+#6 2.770 missing groups or modules: postgresql:16
+#6 3.043 Updating Subscription Management repositories.
+#6 3.043 Unable to read consumer identity
+#6 3.045 
+#6 3.045 This system is not registered with an entitlement server. You can use subscription-manager to register.
+#6 3.045 
+#6 3.095 Last metadata expiration check: 0:00:01 ago on Tue Jul  9 09:14:47 2024.
+#6 3.533 pgdg-redhat-repo-latest.noarch.rpm               28 kB/s |  12 kB     00:00    
+#6 3.628 Dependencies resolved.
+#6 3.628 ================================================================================
+#6 3.628  Package                Architecture Version           Repository          Size
+#6 3.628 ================================================================================
+#6 3.628 Installing:
+#6 3.628  pgdg-redhat-repo       noarch       42.0-43PGDG       @commandline        12 k
+#6 3.628 
+#6 3.628 Transaction Summary
+#6 3.628 ================================================================================
+#6 3.628 Install  1 Package
+#6 3.628 
+#6 3.628 Total size: 12 k
+#6 3.628 Installed size: 15 k
+#6 3.629 Downloading Packages:
+#6 3.629 Running transaction check
+#6 3.631 Transaction check succeeded.
+#6 3.631 Running transaction test
+#6 3.632 Transaction test succeeded.
+#6 3.633 Running transaction
+#6 3.647   Preparing        :                                                        1/1 
+#6 3.673   Installing       : pgdg-redhat-repo-42.0-43PGDG.noarch                    1/1 
+#6 3.755   Verifying        : pgdg-redhat-repo-42.0-43PGDG.noarch                    1/1 
+#6 3.883 Installed products updated.
+#6 3.895 
+#6 3.895 Installed:
+#6 3.895   pgdg-redhat-repo-42.0-43PGDG.noarch                                           
+#6 3.895 
+#6 3.895 Complete!
+#6 4.218 Updating Subscription Management repositories.
+#6 4.218 Unable to read consumer identity
+#6 4.221 
+#6 4.221 This system is not registered with an entitlement server. You can use subscription-manager to register.
+#6 4.221 
+#6 5.428 PostgreSQL common RPMs for RHEL / Rocky / AlmaL 568  B/s | 659  B     00:01    
+#6 5.431 PostgreSQL common RPMs for RHEL / Rocky / AlmaL 2.4 MB/s | 2.4 kB     00:00    
+#6 5.510 Importing GPG key 0x08B40D20:
+#6 5.510  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 5.510  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 5.510  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 7.755 PostgreSQL common RPMs for RHEL / Rocky / AlmaL 164 kB/s | 361 kB     00:02    
+#6 8.437 PostgreSQL 16 for RHEL / Rocky / AlmaLinux 9 -  1.1 kB/s | 659  B     00:00    
+#6 8.438 PostgreSQL 16 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 8.482 Importing GPG key 0x08B40D20:
+#6 8.482  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 8.482  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 8.482  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 10.05 PostgreSQL 16 for RHEL / Rocky / AlmaLinux 9 -  206 kB/s | 320 kB     00:01    
+#6 10.77 PostgreSQL 15 for RHEL / Rocky / AlmaLinux 9 -  1.0 kB/s | 659  B     00:00    
+#6 10.78 PostgreSQL 15 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 10.87 Importing GPG key 0x08B40D20:
+#6 10.87  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 10.87  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 10.87  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 12.72 PostgreSQL 15 for RHEL / Rocky / AlmaLinux 9 -  301 kB/s | 543 kB     00:01    
+#6 13.85 PostgreSQL 14 for RHEL / Rocky / AlmaLinux 9 -  644  B/s | 659  B     00:01    
+#6 13.85 PostgreSQL 14 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 13.89 Importing GPG key 0x08B40D20:
+#6 13.89  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 13.89  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 13.89  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 17.00 PostgreSQL 14 for RHEL / Rocky / AlmaLinux 9 -  261 kB/s | 807 kB     00:03    
+#6 18.32 PostgreSQL 13 for RHEL / Rocky / AlmaLinux 9 -  583  B/s | 659  B     00:01    
+#6 18.33 PostgreSQL 13 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 18.36 Importing GPG key 0x08B40D20:
+#6 18.36  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 18.36  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 18.36  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 19.99 PostgreSQL 13 for RHEL / Rocky / AlmaLinux 9 -  473 kB/s | 760 kB     00:01    
+#6 20.79 PostgreSQL 12 for RHEL / Rocky / AlmaLinux 9 -  1.1 kB/s | 659  B     00:00    
+#6 20.79 PostgreSQL 12 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 20.83 Importing GPG key 0x08B40D20:
+#6 20.83  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 20.83  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 20.83  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 22.50 PostgreSQL 12 for RHEL / Rocky / AlmaLinux 9 -  423 kB/s | 698 kB     00:01    
+#6 22.78 Package tar-2:1.34-6.el9_1.x86_64 is already installed.
+#6 22.82 Dependencies resolved.
+#6 22.83 ================================================================================
+#6 22.83  Package                Arch   Version               Repository            Size
+#6 22.83 ================================================================================
+#6 22.83 Installing:
+#6 22.83  bind-utils             x86_64 32:9.16.23-18.el9_4.1 ubi-9-appstream-rpms 212 k
+#6 22.83  gettext                x86_64 0.21-8.el9            ubi-9-baseos-rpms    1.1 M
+#6 22.83  glibc-langpack-en      x86_64 2.34-100.el9_4.2      ubi-9-baseos-rpms    666 k
+#6 22.83  glibc-locale-source    x86_64 2.34-100.el9_4.2      ubi-9-appstream-rpms 4.2 M
+#6 22.83  nss_wrapper            x86_64 1.1.13-1.el9          ubi-9-appstream-rpms  17 k
+#6 22.83  postgresql16-server    x86_64 16.3-1PGDG.rhel9      pgdg16               6.7 M
+#6 22.83  rsync                  x86_64 3.2.3-19.el9          ubi-9-baseos-rpms    402 k
+#6 22.83 Upgrading:
+#6 22.83  glibc                  x86_64 2.34-100.el9_4.2      ubi-9-baseos-rpms    2.0 M
+#6 22.83  glibc-common           x86_64 2.34-100.el9_4.2      ubi-9-baseos-rpms    313 k
+#6 22.83  glibc-minimal-langpack x86_64 2.34-100.el9_4.2      ubi-9-baseos-rpms     28 k
+#6 22.83 Installing dependencies:
+#6 22.83  bind-libs              x86_64 32:9.16.23-18.el9_4.1 ubi-9-appstream-rpms 1.2 M
+#6 22.83  bind-license           noarch 32:9.16.23-18.el9_4.1 ubi-9-appstream-rpms  14 k
+#6 22.83  cmake-data             noarch 3.26.5-2.el9          ubi-9-appstream-rpms 2.4 M
+#6 22.83  cmake-filesystem       x86_64 3.26.5-2.el9          ubi-9-appstream-rpms  23 k
+#6 22.83  cmake-rpm-macros       noarch 3.26.5-2.el9          ubi-9-appstream-rpms  12 k
+#6 22.83  emacs-filesystem       noarch 1:27.2-9.el9          ubi-9-appstream-rpms 9.6 k
+#6 22.83  fstrm                  x86_64 0.6.1-3.el9           ubi-9-appstream-rpms  30 k
+#6 22.83  gettext-libs           x86_64 0.21-8.el9            ubi-9-baseos-rpms    306 k
+#6 22.83  groff-base             x86_64 1.22.4-10.el9         ubi-9-baseos-rpms    1.1 M
+#6 22.83  libicu                 x86_64 67.1-9.el9            ubi-9-baseos-rpms    9.6 M
+#6 22.83  libmaxminddb           x86_64 1.5.2-3.el9           ubi-9-appstream-rpms  36 k
+#6 22.83  libpkgconf             x86_64 1.7.3-10.el9          ubi-9-baseos-rpms     37 k
+#6 22.83  libuv                  x86_64 1:1.42.0-1.el9        ubi-9-appstream-rpms 153 k
+#6 22.83  lmdb-libs              x86_64 0.9.29-3.el9          ubi-9-baseos-rpms     63 k
+#6 22.83  lz4                    x86_64 1.9.3-5.el9           ubi-9-baseos-rpms     62 k
+#6 22.83  make                   x86_64 1:4.3-8.el9           ubi-9-baseos-rpms    541 k
+#6 22.83  ncurses                x86_64 6.2-10.20210508.el9   ubi-9-baseos-rpms    410 k
+#6 22.83  nss_wrapper-libs       x86_64 1.1.13-1.el9          ubi-9-appstream-rpms  41 k
+#6 22.83  perl-AutoLoader        noarch 5.74-481.el9          ubi-9-appstream-rpms  21 k
+#6 22.83  perl-B                 x86_64 1.80-481.el9          ubi-9-appstream-rpms 184 k
+#6 22.83  perl-Carp              noarch 1.50-460.el9          ubi-9-appstream-rpms  31 k
+#6 22.83  perl-Class-Struct      noarch 0.66-481.el9          ubi-9-appstream-rpms  22 k
+#6 22.83  perl-Data-Dumper       x86_64 2.174-462.el9         ubi-9-appstream-rpms  59 k
+#6 22.83  perl-Digest            noarch 1.19-4.el9            ubi-9-appstream-rpms  29 k
+#6 22.83  perl-Digest-MD5        x86_64 2.58-4.el9            ubi-9-appstream-rpms  39 k
+#6 22.83  perl-Encode            x86_64 4:3.08-462.el9        ubi-9-appstream-rpms 1.7 M
+#6 22.83  perl-Errno             x86_64 1.30-481.el9          ubi-9-appstream-rpms  15 k
+#6 22.83  perl-Exporter          noarch 5.74-461.el9          ubi-9-appstream-rpms  34 k
+#6 22.83  perl-Fcntl             x86_64 1.13-481.el9          ubi-9-appstream-rpms  22 k
+#6 22.83  perl-File-Basename     noarch 2.85-481.el9          ubi-9-appstream-rpms  17 k
+#6 22.83  perl-File-Path         noarch 2.18-4.el9            ubi-9-appstream-rpms  38 k
+#6 22.83  perl-File-Temp         noarch 1:0.231.100-4.el9     ubi-9-appstream-rpms  63 k
+#6 22.83  perl-File-stat         noarch 1.09-481.el9          ubi-9-appstream-rpms  17 k
+#6 22.83  perl-FileHandle        noarch 2.03-481.el9          ubi-9-appstream-rpms  16 k
+#6 22.83  perl-Getopt-Long       noarch 1:2.52-4.el9          ubi-9-appstream-rpms  64 k
+#6 22.83  perl-Getopt-Std        noarch 1.12-481.el9          ubi-9-appstream-rpms  16 k
+#6 22.83  perl-HTTP-Tiny         noarch 0.076-462.el9         ubi-9-appstream-rpms  57 k
+#6 22.83  perl-IO                x86_64 1.43-481.el9          ubi-9-appstream-rpms  92 k
+#6 22.83  perl-IO-Socket-IP      noarch 0.41-5.el9            ubi-9-appstream-rpms  45 k
+#6 22.83  perl-IO-Socket-SSL     noarch 2.073-1.el9           ubi-9-appstream-rpms 223 k
+#6 22.83  perl-IPC-Open3         noarch 1.21-481.el9          ubi-9-appstream-rpms  24 k
+#6 22.83  perl-MIME-Base64       x86_64 3.16-4.el9            ubi-9-appstream-rpms  34 k
+#6 22.83  perl-Mozilla-CA        noarch 20200520-6.el9        ubi-9-appstream-rpms  14 k
+#6 22.83  perl-Net-SSLeay        x86_64 1.92-2.el9            ubi-9-appstream-rpms 392 k
+#6 22.83  perl-POSIX             x86_64 1.94-481.el9          ubi-9-appstream-rpms  98 k
+#6 22.83  perl-PathTools         x86_64 3.78-461.el9          ubi-9-appstream-rpms  92 k
+#6 22.83  perl-Pod-Escapes       noarch 1:1.07-460.el9        ubi-9-appstream-rpms  22 k
+#6 22.83  perl-Pod-Perldoc       noarch 3.28.01-461.el9       ubi-9-appstream-rpms  92 k
+#6 22.83  perl-Pod-Simple        noarch 1:3.42-4.el9          ubi-9-appstream-rpms 229 k
+#6 22.83  perl-Pod-Usage         noarch 4:2.01-4.el9          ubi-9-appstream-rpms  43 k
+#6 22.83  perl-Scalar-List-Utils x86_64 4:1.56-461.el9        ubi-9-appstream-rpms  77 k
+#6 22.83  perl-SelectSaver       noarch 1.02-481.el9          ubi-9-appstream-rpms  12 k
+#6 22.83  perl-Socket            x86_64 4:2.031-4.el9         ubi-9-appstream-rpms  58 k
+#6 22.83  perl-Storable          x86_64 1:3.21-460.el9        ubi-9-appstream-rpms  98 k
+#6 22.83  perl-Symbol            noarch 1.08-481.el9          ubi-9-appstream-rpms  14 k
+#6 22.83  perl-Term-ANSIColor    noarch 5.01-461.el9          ubi-9-appstream-rpms  51 k
+#6 22.83  perl-Term-Cap          noarch 1.17-460.el9          ubi-9-appstream-rpms  24 k
+#6 22.83  perl-Text-ParseWords   noarch 3.30-460.el9          ubi-9-appstream-rpms  18 k
+#6 22.83  perl-Text-Tabs+Wrap    noarch 2013.0523-460.el9     ubi-9-appstream-rpms  25 k
+#6 22.83  perl-Time-Local        noarch 2:1.300-7.el9         ubi-9-appstream-rpms  37 k
+#6 22.83  perl-URI               noarch 5.09-3.el9            ubi-9-appstream-rpms 125 k
+#6 22.83  perl-base              noarch 2.27-481.el9          ubi-9-appstream-rpms  16 k
+#6 22.83  perl-constant          noarch 1.33-461.el9          ubi-9-appstream-rpms  25 k
+#6 22.83  perl-if                noarch 0.60.800-481.el9      ubi-9-appstream-rpms  14 k
+#6 22.83  perl-interpreter       x86_64 4:5.32.1-481.el9      ubi-9-appstream-rpms  73 k
+#6 22.83  perl-libnet            noarch 3.13-4.el9            ubi-9-appstream-rpms 134 k
+#6 22.83  perl-libs              x86_64 4:5.32.1-481.el9      ubi-9-appstream-rpms 2.2 M
+#6 22.83  perl-mro               x86_64 1.23-481.el9          ubi-9-appstream-rpms  29 k
+#6 22.83  perl-overload          noarch 1.31-481.el9          ubi-9-appstream-rpms  46 k
+#6 22.83  perl-overloading       noarch 0.02-481.el9          ubi-9-appstream-rpms  13 k
+#6 22.83  perl-parent            noarch 1:0.238-460.el9       ubi-9-appstream-rpms  16 k
+#6 22.83  perl-podlators         noarch 1:4.14-460.el9        ubi-9-appstream-rpms 118 k
+#6 22.83  perl-subs              noarch 1.03-481.el9          ubi-9-appstream-rpms  12 k
+#6 22.83  perl-vars              noarch 1.05-481.el9          ubi-9-appstream-rpms  13 k
+#6 22.83  pkgconf                x86_64 1.7.3-10.el9          ubi-9-baseos-rpms     45 k
+#6 22.83  pkgconf-m4             noarch 1.7.3-10.el9          ubi-9-baseos-rpms     16 k
+#6 22.83  pkgconf-pkg-config     x86_64 1.7.3-10.el9          ubi-9-baseos-rpms     12 k
+#6 22.83  postgresql16           x86_64 16.3-1PGDG.rhel9      pgdg16               1.7 M
+#6 22.83  postgresql16-libs      x86_64 16.3-1PGDG.rhel9      pgdg16               333 k
+#6 22.83  protobuf-c             x86_64 1.3.3-13.el9          ubi-9-baseos-rpms     37 k
+#6 22.83  vim-filesystem         noarch 2:8.2.2637-20.el9_1   ubi-9-baseos-rpms     22 k
+#6 22.83 Installing weak dependencies:
+#6 22.83  cmake                  x86_64 3.26.5-2.el9          ubi-9-appstream-rpms 8.7 M
+#6 22.83  perl-NDBM_File         x86_64 1.15-481.el9          ubi-9-appstream-rpms  23 k
+#6 22.83 
+#6 22.83 Transaction Summary
+#6 22.83 ================================================================================
+#6 22.83 Install  90 Packages
+#6 22.83 Upgrade   3 Packages
+#6 22.83 
+#6 22.83 Total download size: 50 M
+#6 22.83 Downloading Packages:
+#6 23.44 (1/93): postgresql16-libs-16.3-1PGDG.rhel9.x86_ 558 kB/s | 333 kB     00:00    
+#6 23.65 (2/93): gettext-0.21-8.el9.x86_64.rpm           5.4 MB/s | 1.1 MB     00:00    
+#6 23.66 (3/93): postgresql16-16.3-1PGDG.rhel9.x86_64.rp 2.1 MB/s | 1.7 MB     00:00    
+#6 23.70 (4/93): gettext-libs-0.21-8.el9.x86_64.rpm      5.9 MB/s | 306 kB     00:00    
+#6 23.77 (5/93): groff-base-1.22.4-10.el9.x86_64.rpm      17 MB/s | 1.1 MB     00:00    
+#6 23.90 (6/93): glibc-langpack-en-2.34-100.el9_4.2.x86_ 2.8 MB/s | 666 kB     00:00    
+#6 23.94 (7/93): libpkgconf-1.7.3-10.el9.x86_64.rpm      921 kB/s |  37 kB     00:00    
+#6 23.96 (8/93): postgresql16-server-16.3-1PGDG.rhel9.x8 6.0 MB/s | 6.7 MB     00:01    
+#6 23.97 (9/93): lmdb-libs-0.9.29-3.el9.x86_64.rpm       1.7 MB/s |  63 kB     00:00    
+#6 24.06 (10/93): make-4.3-8.el9.x86_64.rpm              6.1 MB/s | 541 kB     00:00    
+#6 24.12 (11/93): ncurses-6.2-10.20210508.el9.x86_64.rpm 6.9 MB/s | 410 kB     00:00    
+#6 24.15 (12/93): libicu-67.1-9.el9.x86_64.rpm            25 MB/s | 9.6 MB     00:00    
+#6 24.16 (13/93): lz4-1.9.3-5.el9.x86_64.rpm             324 kB/s |  62 kB     00:00    
+#6 24.16 (14/93): pkgconf-1.7.3-10.el9.x86_64.rpm        1.1 MB/s |  45 kB     00:00    
+#6 24.17 (15/93): pkgconf-pkg-config-1.7.3-10.el9.x86_64 893 kB/s |  12 kB     00:00    
+#6 24.17 (16/93): protobuf-c-1.3.3-13.el9.x86_64.rpm     2.7 MB/s |  37 kB     00:00    
+#6 24.18 (17/93): pkgconf-m4-1.7.3-10.el9.noarch.rpm     647 kB/s |  16 kB     00:00    
+#6 24.19 (18/93): emacs-filesystem-27.2-9.el9.noarch.rpm 825 kB/s | 9.6 kB     00:00    
+#6 24.20 (19/93): vim-filesystem-8.2.2637-20.el9_1.noarc 939 kB/s |  22 kB     00:00    
+#6 24.20 (20/93): fstrm-0.6.1-3.el9.x86_64.rpm           2.2 MB/s |  30 kB     00:00    
+#6 24.21 (21/93): libmaxminddb-1.5.2-3.el9.x86_64.rpm    2.6 MB/s |  36 kB     00:00    
+#6 24.22 (22/93): rsync-3.2.3-19.el9.x86_64.rpm          8.0 MB/s | 402 kB     00:00    
+#6 24.22 (23/93): libuv-1.42.0-1.el9.x86_64.rpm          7.6 MB/s | 153 kB     00:00    
+#6 24.23 (24/93): nss_wrapper-1.1.13-1.el9.x86_64.rpm    1.0 MB/s |  17 kB     00:00    
+#6 24.23 (25/93): nss_wrapper-libs-1.1.13-1.el9.x86_64.r 3.1 MB/s |  41 kB     00:00    
+#6 24.24 (26/93): perl-Carp-1.50-460.el9.noarch.rpm      2.3 MB/s |  31 kB     00:00    
+#6 24.24 (27/93): perl-Data-Dumper-2.174-462.el9.x86_64. 3.5 MB/s |  59 kB     00:00    
+#6 24.25 (28/93): perl-Digest-1.19-4.el9.noarch.rpm      1.8 MB/s |  29 kB     00:00    
+#6 24.25 (29/93): perl-Digest-MD5-2.58-4.el9.x86_64.rpm  2.5 MB/s |  39 kB     00:00    
+#6 24.26 (30/93): perl-Exporter-5.74-461.el9.noarch.rpm  2.1 MB/s |  34 kB     00:00    
+#6 24.27 (31/93): perl-File-Path-2.18-4.el9.noarch.rpm   2.5 MB/s |  38 kB     00:00    
+#6 24.30 (32/93): perl-Encode-3.08-462.el9.x86_64.rpm     29 MB/s | 1.7 MB     00:00    
+#6 24.31 (33/93): perl-Getopt-Long-2.52-4.el9.noarch.rpm 1.6 MB/s |  64 kB     00:00    
+#6 24.32 (34/93): perl-File-Temp-0.231.100-4.el9.noarch. 1.1 MB/s |  63 kB     00:00    
+#6 24.33 (35/93): perl-IO-Socket-SSL-2.073-1.el9.noarch.  12 MB/s | 223 kB     00:00    
+#6 24.33 (36/93): perl-IO-Socket-IP-0.41-5.el9.noarch.rp 1.8 MB/s |  45 kB     00:00    
+#6 24.34 (37/93): perl-MIME-Base64-3.16-4.el9.x86_64.rpm 2.1 MB/s |  34 kB     00:00    
+#6 24.34 (38/93): perl-Mozilla-CA-20200520-6.el9.noarch. 855 kB/s |  14 kB     00:00    
+#6 24.35 (39/93): perl-Net-SSLeay-1.92-2.el9.x86_64.rpm   18 MB/s | 392 kB     00:00    
+#6 24.36 (40/93): perl-PathTools-3.78-461.el9.x86_64.rpm 4.4 MB/s |  92 kB     00:00    
+#6 24.36 (41/93): perl-Pod-Escapes-1.07-460.el9.noarch.r 1.3 MB/s |  22 kB     00:00    
+#6 24.38 (42/93): perl-Pod-Usage-2.01-4.el9.noarch.rpm   3.3 MB/s |  43 kB     00:00    
+#6 24.38 (43/93): perl-Pod-Perldoc-3.28.01-461.el9.noarc 3.1 MB/s |  92 kB     00:00    
+#6 24.39 (44/93): perl-Pod-Simple-3.42-4.el9.noarch.rpm  8.6 MB/s | 229 kB     00:00    
+#6 24.39 (45/93): perl-Scalar-List-Utils-1.56-461.el9.x8 4.3 MB/s |  77 kB     00:00    
+#6 24.40 (46/93): perl-Socket-2.031-4.el9.x86_64.rpm     3.5 MB/s |  58 kB     00:00    
+#6 24.40 (47/93): perl-Storable-3.21-460.el9.x86_64.rpm  6.1 MB/s |  98 kB     00:00    
+#6 24.41 (48/93): perl-Term-ANSIColor-5.01-461.el9.noarc 3.4 MB/s |  51 kB     00:00    
+#6 24.41 (49/93): perl-Term-Cap-1.17-460.el9.noarch.rpm  1.5 MB/s |  24 kB     00:00    
+#6 24.42 (50/93): perl-Text-ParseWords-3.30-460.el9.noar 1.3 MB/s |  18 kB     00:00    
+#6 24.43 (51/93): perl-Time-Local-1.300-7.el9.noarch.rpm 2.8 MB/s |  37 kB     00:00    
+#6 24.43 (52/93): perl-Text-Tabs+Wrap-2013.0523-460.el9. 1.2 MB/s |  25 kB     00:00    
+#6 24.43 (53/93): perl-URI-5.09-3.el9.noarch.rpm         6.6 MB/s | 125 kB     00:00    
+#6 24.44 (54/93): perl-constant-1.33-461.el9.noarch.rpm  2.1 MB/s |  25 kB     00:00    
+#6 24.45 (55/93): perl-parent-0.238-460.el9.noarch.rpm   1.3 MB/s |  16 kB     00:00    
+#6 24.45 (56/93): perl-libnet-3.13-4.el9.noarch.rpm      6.1 MB/s | 134 kB     00:00    
+#6 24.46 (57/93): perl-podlators-4.14-460.el9.noarch.rpm 6.6 MB/s | 118 kB     00:00    
+#6 24.48 (58/93): bind-utils-9.16.23-18.el9_4.1.x86_64.r  10 MB/s | 212 kB     00:00    
+#6 24.48 (59/93): bind-license-9.16.23-18.el9_4.1.noarch 512 kB/s |  14 kB     00:00    
+#6 24.61 (60/93): bind-libs-9.16.23-18.el9_4.1.x86_64.rp 7.7 MB/s | 1.2 MB     00:00    
+#6 24.63 (61/93): cmake-data-3.26.5-2.el9.noarch.rpm      15 MB/s | 2.4 MB     00:00    
+#6 24.64 (62/93): cmake-filesystem-3.26.5-2.el9.x86_64.r 794 kB/s |  23 kB     00:00    
+#6 24.65 (63/93): cmake-rpm-macros-3.26.5-2.el9.noarch.r 652 kB/s |  12 kB     00:00    
+#6 24.68 (64/93): perl-AutoLoader-5.74-481.el9.noarch.rp 699 kB/s |  21 kB     00:00    
+#6 24.72 (65/93): perl-B-1.80-481.el9.x86_64.rpm         5.3 MB/s | 184 kB     00:00    
+#6 24.77 (66/93): cmake-3.26.5-2.el9.x86_64.rpm           30 MB/s | 8.7 MB     00:00    
+#6 24.77 (67/93): perl-Class-Struct-0.66-481.el9.noarch. 443 kB/s |  22 kB     00:00    
+#6 24.80 (68/93): glibc-locale-source-2.34-100.el9_4.2.x  26 MB/s | 4.2 MB     00:00    
+#6 24.80 (69/93): perl-Errno-1.30-481.el9.x86_64.rpm     449 kB/s |  15 kB     00:00    
+#6 24.80 (70/93): perl-Fcntl-1.13-481.el9.x86_64.rpm     613 kB/s |  22 kB     00:00    
+#6 24.81 (71/93): perl-File-Basename-2.85-481.el9.noarch 1.6 MB/s |  17 kB     00:00    
+#6 24.81 (72/93): perl-File-stat-1.09-481.el9.noarch.rpm 1.3 MB/s |  17 kB     00:00    
+#6 24.82 (73/93): perl-FileHandle-2.03-481.el9.noarch.rp 1.4 MB/s |  16 kB     00:00    
+#6 24.82 (74/93): perl-Getopt-Std-1.12-481.el9.noarch.rp 1.2 MB/s |  16 kB     00:00    
+#6 24.83 (75/93): perl-IO-1.43-481.el9.x86_64.rpm        6.3 MB/s |  92 kB     00:00    
+#6 24.83 (76/93): perl-IPC-Open3-1.21-481.el9.noarch.rpm 1.9 MB/s |  24 kB     00:00    
+#6 24.85 (77/93): perl-NDBM_File-1.15-481.el9.x86_64.rpm 1.5 MB/s |  23 kB     00:00    
+#6 24.85 (78/93): perl-HTTP-Tiny-0.076-462.el9.noarch.rp 1.5 MB/s |  57 kB     00:00    
+#6 24.85 (79/93): perl-POSIX-1.94-481.el9.x86_64.rpm     5.1 MB/s |  98 kB     00:00    
+#6 24.86 (80/93): perl-SelectSaver-1.02-481.el9.noarch.r 956 kB/s |  12 kB     00:00    
+#6 24.86 (81/93): perl-Symbol-1.08-481.el9.noarch.rpm    1.2 MB/s |  14 kB     00:00    
+#6 24.88 (82/93): perl-interpreter-5.32.1-481.el9.x86_64 5.2 MB/s |  73 kB     00:00    
+#6 24.88 (83/93): perl-if-0.60.800-481.el9.noarch.rpm    643 kB/s |  14 kB     00:00    
+#6 24.88 (84/93): perl-base-2.27-481.el9.noarch.rpm      543 kB/s |  16 kB     00:00    
+#6 24.90 (85/93): perl-mro-1.23-481.el9.x86_64.rpm       2.0 MB/s |  29 kB     00:00    
+#6 24.90 (86/93): perl-overload-1.31-481.el9.noarch.rpm  2.8 MB/s |  46 kB     00:00    
+#6 24.91 (87/93): perl-overloading-0.02-481.el9.noarch.r 948 kB/s |  13 kB     00:00    
+#6 24.92 (88/93): perl-subs-1.03-481.el9.noarch.rpm      766 kB/s |  12 kB     00:00    
+#6 24.93 (89/93): perl-vars-1.05-481.el9.noarch.rpm      879 kB/s |  13 kB     00:00    
+#6 24.97 (90/93): glibc-common-2.34-100.el9_4.2.x86_64.r 7.1 MB/s | 313 kB     00:00    
+#6 24.98 (91/93): perl-libs-5.32.1-481.el9.x86_64.rpm     21 MB/s | 2.2 MB     00:00    
+#6 25.00 (92/93): glibc-2.34-100.el9_4.2.x86_64.rpm       25 MB/s | 2.0 MB     00:00    
+#6 25.00 (93/93): glibc-minimal-langpack-2.34-100.el9_4. 823 kB/s |  28 kB     00:00    
+#6 25.02 --------------------------------------------------------------------------------
+#6 25.02 Total                                            23 MB/s |  50 MB     00:02     
+#6 25.06 PostgreSQL 16 for RHEL / Rocky / AlmaLinux 9 -  2.4 MB/s | 2.4 kB     00:00    
+#6 25.11 Importing GPG key 0x08B40D20:
+#6 25.11  Userid     : "PostgreSQL RPM Repository <pgsql-pkg-yum@lists.postgresql.org>"
+#6 25.11  Fingerprint: D4BF 08AE 67A0 B4C7 A1DB CCD2 40BC A2B4 08B4 0D20
+#6 25.11  From       : /etc/pki/rpm-gpg/PGDG-RPM-GPG-KEY-RHEL
+#6 25.12 Key imported successfully
+#6 26.30 Running transaction check
+#6 26.43 Transaction check succeeded.
+#6 26.43 Running transaction test
+#6 26.92 Transaction test succeeded.
+#6 26.92 Running transaction
+#6 28.05   Preparing        :                                                        1/1 
+#6 28.09   Installing       : cmake-filesystem-3.26.5-2.el9.x86_64                  1/96 
+#6 28.09   Installing       : cmake-rpm-macros-3.26.5-2.el9.noarch                  2/96 
+#6 28.10   Upgrading        : glibc-common-2.34-100.el9_4.2.x86_64                  3/96 
+#6 28.11   Upgrading        : glibc-minimal-langpack-2.34-100.el9_4.2.x86_64        4/96 
+#6 28.11   Running scriptlet: glibc-2.34-100.el9_4.2.x86_64                         5/96 
+#6 28.15   Upgrading        : glibc-2.34-100.el9_4.2.x86_64                         5/96 
+#6 28.15   Running scriptlet: glibc-2.34-100.el9_4.2.x86_64                         5/96 
+#6 28.24   Installing       : glibc-langpack-en-2.34-100.el9_4.2.x86_64             6/96 
+#6 28.25   Installing       : postgresql16-libs-16.3-1PGDG.rhel9.x86_64             7/96 
+#6 28.26   Running scriptlet: postgresql16-libs-16.3-1PGDG.rhel9.x86_64             7/96 
+#6 28.43   Installing       : libicu-67.1-9.el9.x86_64                              8/96 
+#6 28.43   Installing       : lmdb-libs-0.9.29-3.el9.x86_64                         9/96 
+#6 28.44   Installing       : protobuf-c-1.3.3-13.el9.x86_64                       10/96 
+#6 28.45   Installing       : libuv-1:1.42.0-1.el9.x86_64                          11/96 
+#6 28.46   Installing       : gettext-libs-0.21-8.el9.x86_64                       12/96 
+#6 28.46   Running scriptlet: groff-base-1.22.4-10.el9.x86_64                      13/96 
+#6 28.51   Installing       : groff-base-1.22.4-10.el9.x86_64                      13/96 
+#6 28.51   Running scriptlet: groff-base-1.22.4-10.el9.x86_64                      13/96 
+#6 28.52   Installing       : libpkgconf-1.7.3-10.el9.x86_64                       14/96 
+#6 28.53   Installing       : pkgconf-1.7.3-10.el9.x86_64                          15/96 
+#6 28.53   Installing       : lz4-1.9.3-5.el9.x86_64                               16/96 
+#6 28.59   Installing       : postgresql16-16.3-1PGDG.rhel9.x86_64                 17/96 
+#6 28.59   Running scriptlet: postgresql16-16.3-1PGDG.rhel9.x86_64                 17/96 
+#6 28.62   Installing       : make-1:4.3-8.el9.x86_64                              18/96 
+#6 28.63   Installing       : ncurses-6.2-10.20210508.el9.x86_64                   19/96 
+#6 28.64   Installing       : perl-Digest-1.19-4.el9.noarch                        20/96 
+#6 28.64   Installing       : perl-Digest-MD5-2.58-4.el9.x86_64                    21/96 
+#6 28.65   Installing       : perl-FileHandle-2.03-481.el9.noarch                  22/96 
+#6 28.65   Installing       : perl-B-1.80-481.el9.x86_64                           23/96 
+#6 28.66   Installing       : perl-Data-Dumper-2.174-462.el9.x86_64                24/96 
+#6 28.67   Installing       : perl-libnet-3.13-4.el9.noarch                        25/96 
+#6 28.67   Installing       : perl-AutoLoader-5.74-481.el9.noarch                  26/96 
+#6 28.68   Installing       : perl-base-2.27-481.el9.noarch                        27/96 
+#6 28.69   Installing       : perl-URI-5.09-3.el9.noarch                           28/96 
+#6 28.69   Installing       : perl-Time-Local-2:1.300-7.el9.noarch                 29/96 
+#6 28.70   Installing       : perl-Mozilla-CA-20200520-6.el9.noarch                30/96 
+#6 28.70   Installing       : perl-IO-Socket-IP-0.41-5.el9.noarch                  31/96 
+#6 28.71   Installing       : perl-if-0.60.800-481.el9.noarch                      32/96 
+#6 28.71   Installing       : perl-File-Path-2.18-4.el9.noarch                     33/96 
+#6 28.72   Installing       : perl-IO-Socket-SSL-2.073-1.el9.noarch                34/96 
+#6 28.73   Installing       : perl-Net-SSLeay-1.92-2.el9.x86_64                    35/96 
+#6 28.74   Installing       : perl-Pod-Escapes-1:1.07-460.el9.noarch               36/96 
+#6 28.74   Installing       : perl-Text-Tabs+Wrap-2013.0523-460.el9.noarch         37/96 
+#6 28.75   Installing       : perl-Term-ANSIColor-5.01-461.el9.noarch              38/96 
+#6 28.75   Installing       : perl-Class-Struct-0.66-481.el9.noarch                39/96 
+#6 28.76   Installing       : perl-POSIX-1.94-481.el9.x86_64                       40/96 
+#6 28.77   Installing       : perl-subs-1.03-481.el9.noarch                        41/96 
+#6 28.77   Installing       : perl-File-Temp-1:0.231.100-4.el9.noarch              42/96 
+#6 28.78   Installing       : perl-HTTP-Tiny-0.076-462.el9.noarch                  43/96 
+#6 28.78   Installing       : perl-Term-Cap-1.17-460.el9.noarch                    44/96 
+#6 28.79   Installing       : perl-Pod-Simple-1:3.42-4.el9.noarch                  45/96 
+#6 28.80   Installing       : perl-IPC-Open3-1.21-481.el9.noarch                   46/96 
+#6 28.81   Installing       : perl-Socket-4:2.031-4.el9.x86_64                     47/96 
+#6 28.81   Installing       : perl-SelectSaver-1.02-481.el9.noarch                 48/96 
+#6 28.82   Installing       : perl-Symbol-1.08-481.el9.noarch                      49/96 
+#6 28.82   Installing       : perl-podlators-1:4.14-460.el9.noarch                 50/96 
+#6 28.83   Installing       : perl-Pod-Perldoc-3.28.01-461.el9.noarch              51/96 
+#6 28.83   Installing       : perl-File-stat-1.09-481.el9.noarch                   52/96 
+#6 28.84   Installing       : perl-Text-ParseWords-3.30-460.el9.noarch             53/96 
+#6 28.84   Installing       : perl-Fcntl-1.13-481.el9.x86_64                       54/96 
+#6 28.85   Installing       : perl-overloading-0.02-481.el9.noarch                 55/96 
+#6 28.85   Installing       : perl-Pod-Usage-4:2.01-4.el9.noarch                   56/96 
+#6 28.86   Installing       : perl-IO-1.43-481.el9.x86_64                          57/96 
+#6 28.87   Installing       : perl-mro-1.23-481.el9.x86_64                         58/96 
+#6 28.87   Installing       : perl-MIME-Base64-3.16-4.el9.x86_64                   59/96 
+#6 28.88   Installing       : perl-Scalar-List-Utils-4:1.56-461.el9.x86_64         60/96 
+#6 28.89   Installing       : perl-constant-1.33-461.el9.noarch                    61/96 
+#6 28.89   Installing       : perl-parent-1:0.238-460.el9.noarch                   62/96 
+#6 28.89   Installing       : perl-Errno-1.30-481.el9.x86_64                       63/96 
+#6 28.90   Installing       : perl-Storable-1:3.21-460.el9.x86_64                  64/96 
+#6 28.90   Installing       : perl-File-Basename-2.85-481.el9.noarch               65/96 
+#6 28.91   Installing       : perl-Getopt-Std-1.12-481.el9.noarch                  66/96 
+#6 28.91   Installing       : perl-vars-1.05-481.el9.noarch                        67/96 
+#6 28.92   Installing       : perl-Getopt-Long-1:2.52-4.el9.noarch                 68/96 
+#6 28.92   Installing       : perl-overload-1.31-481.el9.noarch                    69/96 
+#6 28.93   Installing       : perl-Carp-1.50-460.el9.noarch                        70/96 
+#6 28.93   Installing       : perl-Exporter-5.74-461.el9.noarch                    71/96 
+#6 28.94   Installing       : perl-PathTools-3.78-461.el9.x86_64                   72/96 
+#6 28.94   Installing       : perl-NDBM_File-1.15-481.el9.x86_64                   73/96 
+#6 29.00   Installing       : perl-Encode-4:3.08-462.el9.x86_64                    74/96 
+#6 29.10   Installing       : perl-libs-4:5.32.1-481.el9.x86_64                    75/96 
+#6 29.11   Installing       : perl-interpreter-4:5.32.1-481.el9.x86_64             76/96 
+#6 29.12   Installing       : fstrm-0.6.1-3.el9.x86_64                             77/96 
+#6 29.12   Installing       : libmaxminddb-1.5.2-3.el9.x86_64                      78/96 
+#6 29.13   Installing       : nss_wrapper-libs-1.1.13-1.el9.x86_64                 79/96 
+#6 29.13   Installing       : bind-license-32:9.16.23-18.el9_4.1.noarch            80/96 
+#6 29.15   Installing       : bind-libs-32:9.16.23-18.el9_4.1.x86_64               81/96 
+#6 29.16   Installing       : emacs-filesystem-1:27.2-9.el9.noarch                 82/96 
+#6 29.17   Installing       : vim-filesystem-2:8.2.2637-20.el9_1.noarch            83/96 
+#6 29.46   Installing       : cmake-data-3.26.5-2.el9.noarch                       84/96 
+#6 29.61   Installing       : cmake-3.26.5-2.el9.x86_64                            85/96 
+#6 29.62   Installing       : pkgconf-m4-1.7.3-10.el9.noarch                       86/96 
+#6 29.63   Installing       : pkgconf-pkg-config-1.7.3-10.el9.x86_64               87/96 
+#6 29.63   Installing       : nss_wrapper-1.1.13-1.el9.x86_64                      88/96 
+#6 29.65   Installing       : bind-utils-32:9.16.23-18.el9_4.1.x86_64              89/96 
+#6 29.66   Running scriptlet: postgresql16-server-16.3-1PGDG.rhel9.x86_64          90/96 
+#6 29.80   Installing       : postgresql16-server-16.3-1PGDG.rhel9.x86_64          90/96 
+#6 29.81   Running scriptlet: postgresql16-server-16.3-1PGDG.rhel9.x86_64          90/96 
+#6 29.86   Installing       : gettext-0.21-8.el9.x86_64                            91/96 
+#6 29.88   Installing       : rsync-3.2.3-19.el9.x86_64                            92/96 
+#6 30.01   Installing       : glibc-locale-source-2.34-100.el9_4.2.x86_64          93/96 
+#6 30.02   Cleanup          : glibc-2.34-100.el9.x86_64                            94/96 
+#6 30.02   Cleanup          : glibc-minimal-langpack-2.34-100.el9.x86_64           95/96 
+#6 30.03   Cleanup          : glibc-common-2.34-100.el9.x86_64                     96/96 
+#6 30.04   Running scriptlet: glibc-common-2.34-100.el9.x86_64                     96/96 
+#6 30.58   Verifying        : postgresql16-16.3-1PGDG.rhel9.x86_64                  1/96 
+#6 30.58   Verifying        : postgresql16-libs-16.3-1PGDG.rhel9.x86_64             2/96 
+#6 30.58   Verifying        : postgresql16-server-16.3-1PGDG.rhel9.x86_64           3/96 
+#6 30.58   Verifying        : gettext-0.21-8.el9.x86_64                             4/96 
+#6 30.58   Verifying        : gettext-libs-0.21-8.el9.x86_64                        5/96 
+#6 30.58   Verifying        : glibc-langpack-en-2.34-100.el9_4.2.x86_64             6/96 
+#6 30.58   Verifying        : groff-base-1.22.4-10.el9.x86_64                       7/96 
+#6 30.58   Verifying        : libicu-67.1-9.el9.x86_64                              8/96 
+#6 30.58   Verifying        : libpkgconf-1.7.3-10.el9.x86_64                        9/96 
+#6 30.58   Verifying        : lmdb-libs-0.9.29-3.el9.x86_64                        10/96 
+#6 30.58   Verifying        : lz4-1.9.3-5.el9.x86_64                               11/96 
+#6 30.58   Verifying        : make-1:4.3-8.el9.x86_64                              12/96 
+#6 30.58   Verifying        : ncurses-6.2-10.20210508.el9.x86_64                   13/96 
+#6 30.58   Verifying        : pkgconf-1.7.3-10.el9.x86_64                          14/96 
+#6 30.58   Verifying        : pkgconf-m4-1.7.3-10.el9.noarch                       15/96 
+#6 30.58   Verifying        : pkgconf-pkg-config-1.7.3-10.el9.x86_64               16/96 
+#6 30.58   Verifying        : protobuf-c-1.3.3-13.el9.x86_64                       17/96 
+#6 30.58   Verifying        : rsync-3.2.3-19.el9.x86_64                            18/96 
+#6 30.58   Verifying        : vim-filesystem-2:8.2.2637-20.el9_1.noarch            19/96 
+#6 30.58   Verifying        : emacs-filesystem-1:27.2-9.el9.noarch                 20/96 
+#6 30.58   Verifying        : fstrm-0.6.1-3.el9.x86_64                             21/96 
+#6 30.58   Verifying        : libmaxminddb-1.5.2-3.el9.x86_64                      22/96 
+#6 30.58   Verifying        : libuv-1:1.42.0-1.el9.x86_64                          23/96 
+#6 30.58   Verifying        : nss_wrapper-1.1.13-1.el9.x86_64                      24/96 
+#6 30.58   Verifying        : nss_wrapper-libs-1.1.13-1.el9.x86_64                 25/96 
+#6 30.58   Verifying        : perl-Carp-1.50-460.el9.noarch                        26/96 
+#6 30.58   Verifying        : perl-Data-Dumper-2.174-462.el9.x86_64                27/96 
+#6 30.58   Verifying        : perl-Digest-1.19-4.el9.noarch                        28/96 
+#6 30.58   Verifying        : perl-Digest-MD5-2.58-4.el9.x86_64                    29/96 
+#6 30.58   Verifying        : perl-Encode-4:3.08-462.el9.x86_64                    30/96 
+#6 30.58   Verifying        : perl-Exporter-5.74-461.el9.noarch                    31/96 
+#6 30.58   Verifying        : perl-File-Path-2.18-4.el9.noarch                     32/96 
+#6 30.58   Verifying        : perl-File-Temp-1:0.231.100-4.el9.noarch              33/96 
+#6 30.58   Verifying        : perl-Getopt-Long-1:2.52-4.el9.noarch                 34/96 
+#6 30.58   Verifying        : perl-IO-Socket-IP-0.41-5.el9.noarch                  35/96 
+#6 30.58   Verifying        : perl-IO-Socket-SSL-2.073-1.el9.noarch                36/96 
+#6 30.58   Verifying        : perl-MIME-Base64-3.16-4.el9.x86_64                   37/96 
+#6 30.58   Verifying        : perl-Mozilla-CA-20200520-6.el9.noarch                38/96 
+#6 30.58   Verifying        : perl-Net-SSLeay-1.92-2.el9.x86_64                    39/96 
+#6 30.58   Verifying        : perl-PathTools-3.78-461.el9.x86_64                   40/96 
+#6 30.58   Verifying        : perl-Pod-Escapes-1:1.07-460.el9.noarch               41/96 
+#6 30.58   Verifying        : perl-Pod-Perldoc-3.28.01-461.el9.noarch              42/96 
+#6 30.58   Verifying        : perl-Pod-Simple-1:3.42-4.el9.noarch                  43/96 
+#6 30.58   Verifying        : perl-Pod-Usage-4:2.01-4.el9.noarch                   44/96 
+#6 30.58   Verifying        : perl-Scalar-List-Utils-4:1.56-461.el9.x86_64         45/96 
+#6 30.58   Verifying        : perl-Socket-4:2.031-4.el9.x86_64                     46/96 
+#6 30.58   Verifying        : perl-Storable-1:3.21-460.el9.x86_64                  47/96 
+#6 30.58   Verifying        : perl-Term-ANSIColor-5.01-461.el9.noarch              48/96 
+#6 30.58   Verifying        : perl-Term-Cap-1.17-460.el9.noarch                    49/96 
+#6 30.58   Verifying        : perl-Text-ParseWords-3.30-460.el9.noarch             50/96 
+#6 30.58   Verifying        : perl-Text-Tabs+Wrap-2013.0523-460.el9.noarch         51/96 
+#6 30.58   Verifying        : perl-Time-Local-2:1.300-7.el9.noarch                 52/96 
+#6 30.58   Verifying        : perl-URI-5.09-3.el9.noarch                           53/96 
+#6 30.58   Verifying        : perl-constant-1.33-461.el9.noarch                    54/96 
+#6 30.58   Verifying        : perl-libnet-3.13-4.el9.noarch                        55/96 
+#6 30.58   Verifying        : perl-parent-1:0.238-460.el9.noarch                   56/96 
+#6 30.58   Verifying        : perl-podlators-1:4.14-460.el9.noarch                 57/96 
+#6 30.58   Verifying        : bind-libs-32:9.16.23-18.el9_4.1.x86_64               58/96 
+#6 30.58   Verifying        : bind-license-32:9.16.23-18.el9_4.1.noarch            59/96 
+#6 30.58   Verifying        : bind-utils-32:9.16.23-18.el9_4.1.x86_64              60/96 
+#6 30.58   Verifying        : cmake-3.26.5-2.el9.x86_64                            61/96 
+#6 30.58   Verifying        : cmake-data-3.26.5-2.el9.noarch                       62/96 
+#6 30.58   Verifying        : cmake-filesystem-3.26.5-2.el9.x86_64                 63/96 
+#6 30.58   Verifying        : cmake-rpm-macros-3.26.5-2.el9.noarch                 64/96 
+#6 30.58   Verifying        : glibc-locale-source-2.34-100.el9_4.2.x86_64          65/96 
+#6 30.58   Verifying        : perl-AutoLoader-5.74-481.el9.noarch                  66/96 
+#6 30.58   Verifying        : perl-B-1.80-481.el9.x86_64                           67/96 
+#6 30.58   Verifying        : perl-Class-Struct-0.66-481.el9.noarch                68/96 
+#6 30.58   Verifying        : perl-Errno-1.30-481.el9.x86_64                       69/96 
+#6 30.58   Verifying        : perl-Fcntl-1.13-481.el9.x86_64                       70/96 
+#6 30.58   Verifying        : perl-File-Basename-2.85-481.el9.noarch               71/96 
+#6 30.58   Verifying        : perl-File-stat-1.09-481.el9.noarch                   72/96 
+#6 30.58   Verifying        : perl-FileHandle-2.03-481.el9.noarch                  73/96 
+#6 30.58   Verifying        : perl-Getopt-Std-1.12-481.el9.noarch                  74/96 
+#6 30.58   Verifying        : perl-HTTP-Tiny-0.076-462.el9.noarch                  75/96 
+#6 30.58   Verifying        : perl-IO-1.43-481.el9.x86_64                          76/96 
+#6 30.58   Verifying        : perl-IPC-Open3-1.21-481.el9.noarch                   77/96 
+#6 30.58   Verifying        : perl-NDBM_File-1.15-481.el9.x86_64                   78/96 
+#6 30.58   Verifying        : perl-POSIX-1.94-481.el9.x86_64                       79/96 
+#6 30.58   Verifying        : perl-SelectSaver-1.02-481.el9.noarch                 80/96 
+#6 30.58   Verifying        : perl-Symbol-1.08-481.el9.noarch                      81/96 
+#6 30.58   Verifying        : perl-base-2.27-481.el9.noarch                        82/96 
+#6 30.58   Verifying        : perl-if-0.60.800-481.el9.noarch                      83/96 
+#6 30.58   Verifying        : perl-interpreter-4:5.32.1-481.el9.x86_64             84/96 
+#6 30.58   Verifying        : perl-libs-4:5.32.1-481.el9.x86_64                    85/96 
+#6 30.58   Verifying        : perl-mro-1.23-481.el9.x86_64                         86/96 
+#6 30.58   Verifying        : perl-overload-1.31-481.el9.noarch                    87/96 
+#6 30.58   Verifying        : perl-overloading-0.02-481.el9.noarch                 88/96 
+#6 30.58   Verifying        : perl-subs-1.03-481.el9.noarch                        89/96 
+#6 30.58   Verifying        : perl-vars-1.05-481.el9.noarch                        90/96 
+#6 30.58   Verifying        : glibc-2.34-100.el9_4.2.x86_64                        91/96 
+#6 30.58   Verifying        : glibc-2.34-100.el9.x86_64                            92/96 
+#6 30.58   Verifying        : glibc-common-2.34-100.el9_4.2.x86_64                 93/96 
+#6 30.58   Verifying        : glibc-common-2.34-100.el9.x86_64                     94/96 
+#6 30.58   Verifying        : glibc-minimal-langpack-2.34-100.el9_4.2.x86_64       95/96 
+#6 30.58   Verifying        : glibc-minimal-langpack-2.34-100.el9.x86_64           96/96 
+#6 30.84 Installed products updated.
+#6 30.86 
+#6 30.86 Upgraded:
+#6 30.86   glibc-2.34-100.el9_4.2.x86_64                                                 
+#6 30.86   glibc-common-2.34-100.el9_4.2.x86_64                                          
+#6 30.86   glibc-minimal-langpack-2.34-100.el9_4.2.x86_64                                
+#6 30.86 Installed:
+#6 30.86   bind-libs-32:9.16.23-18.el9_4.1.x86_64                                        
+#6 30.86   bind-license-32:9.16.23-18.el9_4.1.noarch                                     
+#6 30.86   bind-utils-32:9.16.23-18.el9_4.1.x86_64                                       
+#6 30.86   cmake-3.26.5-2.el9.x86_64                                                     
+#6 30.86   cmake-data-3.26.5-2.el9.noarch                                                
+#6 30.86   cmake-filesystem-3.26.5-2.el9.x86_64                                          
+#6 30.86   cmake-rpm-macros-3.26.5-2.el9.noarch                                          
+#6 30.86   emacs-filesystem-1:27.2-9.el9.noarch                                          
+#6 30.86   fstrm-0.6.1-3.el9.x86_64                                                      
+#6 30.86   gettext-0.21-8.el9.x86_64                                                     
+#6 30.86   gettext-libs-0.21-8.el9.x86_64                                                
+#6 30.86   glibc-langpack-en-2.34-100.el9_4.2.x86_64                                     
+#6 30.86   glibc-locale-source-2.34-100.el9_4.2.x86_64                                   
+#6 30.86   groff-base-1.22.4-10.el9.x86_64                                               
+#6 30.86   libicu-67.1-9.el9.x86_64                                                      
+#6 30.86   libmaxminddb-1.5.2-3.el9.x86_64                                               
+#6 30.86   libpkgconf-1.7.3-10.el9.x86_64                                                
+#6 30.86   libuv-1:1.42.0-1.el9.x86_64                                                   
+#6 30.86   lmdb-libs-0.9.29-3.el9.x86_64                                                 
+#6 30.86   lz4-1.9.3-5.el9.x86_64                                                        
+#6 30.86   make-1:4.3-8.el9.x86_64                                                       
+#6 30.86   ncurses-6.2-10.20210508.el9.x86_64                                            
+#6 30.86   nss_wrapper-1.1.13-1.el9.x86_64                                               
+#6 30.86   nss_wrapper-libs-1.1.13-1.el9.x86_64                                          
+#6 30.86   perl-AutoLoader-5.74-481.el9.noarch                                           
+#6 30.86   perl-B-1.80-481.el9.x86_64                                                    
+#6 30.86   perl-Carp-1.50-460.el9.noarch                                                 
+#6 30.86   perl-Class-Struct-0.66-481.el9.noarch                                         
+#6 30.86   perl-Data-Dumper-2.174-462.el9.x86_64                                         
+#6 30.86   perl-Digest-1.19-4.el9.noarch                                                 
+#6 30.86   perl-Digest-MD5-2.58-4.el9.x86_64                                             
+#6 30.86   perl-Encode-4:3.08-462.el9.x86_64                                             
+#6 30.86   perl-Errno-1.30-481.el9.x86_64                                                
+#6 30.86   perl-Exporter-5.74-461.el9.noarch                                             
+#6 30.86   perl-Fcntl-1.13-481.el9.x86_64                                                
+#6 30.86   perl-File-Basename-2.85-481.el9.noarch                                        
+#6 30.86   perl-File-Path-2.18-4.el9.noarch                                              
+#6 30.86   perl-File-Temp-1:0.231.100-4.el9.noarch                                       
+#6 30.86   perl-File-stat-1.09-481.el9.noarch                                            
+#6 30.86   perl-FileHandle-2.03-481.el9.noarch                                           
+#6 30.86   perl-Getopt-Long-1:2.52-4.el9.noarch                                          
+#6 30.86   perl-Getopt-Std-1.12-481.el9.noarch                                           
+#6 30.86   perl-HTTP-Tiny-0.076-462.el9.noarch                                           
+#6 30.86   perl-IO-1.43-481.el9.x86_64                                                   
+#6 30.86   perl-IO-Socket-IP-0.41-5.el9.noarch                                           
+#6 30.86   perl-IO-Socket-SSL-2.073-1.el9.noarch                                         
+#6 30.86   perl-IPC-Open3-1.21-481.el9.noarch                                            
+#6 30.86   perl-MIME-Base64-3.16-4.el9.x86_64                                            
+#6 30.86   perl-Mozilla-CA-20200520-6.el9.noarch                                         
+#6 30.86   perl-NDBM_File-1.15-481.el9.x86_64                                            
+#6 30.86   perl-Net-SSLeay-1.92-2.el9.x86_64                                             
+#6 30.86   perl-POSIX-1.94-481.el9.x86_64                                                
+#6 30.86   perl-PathTools-3.78-461.el9.x86_64                                            
+#6 30.86   perl-Pod-Escapes-1:1.07-460.el9.noarch                                        
+#6 30.86   perl-Pod-Perldoc-3.28.01-461.el9.noarch                                       
+#6 30.86   perl-Pod-Simple-1:3.42-4.el9.noarch                                           
+#6 30.86   perl-Pod-Usage-4:2.01-4.el9.noarch                                            
+#6 30.86   perl-Scalar-List-Utils-4:1.56-461.el9.x86_64                                  
+#6 30.86   perl-SelectSaver-1.02-481.el9.noarch                                          
+#6 30.86   perl-Socket-4:2.031-4.el9.x86_64                                              
+#6 30.86   perl-Storable-1:3.21-460.el9.x86_64                                           
+#6 30.86   perl-Symbol-1.08-481.el9.noarch                                               
+#6 30.86   perl-Term-ANSIColor-5.01-461.el9.noarch                                       
+#6 30.86   perl-Term-Cap-1.17-460.el9.noarch                                             
+#6 30.86   perl-Text-ParseWords-3.30-460.el9.noarch                                      
+#6 30.86   perl-Text-Tabs+Wrap-2013.0523-460.el9.noarch                                  
+#6 30.86   perl-Time-Local-2:1.300-7.el9.noarch                                          
+#6 30.86   perl-URI-5.09-3.el9.noarch                                                    
+#6 30.86   perl-base-2.27-481.el9.noarch                                                 
+#6 30.86   perl-constant-1.33-461.el9.noarch                                             
+#6 30.86   perl-if-0.60.800-481.el9.noarch                                               
+#6 30.86   perl-interpreter-4:5.32.1-481.el9.x86_64                                      
+#6 30.86   perl-libnet-3.13-4.el9.noarch                                                 
+#6 30.86   perl-libs-4:5.32.1-481.el9.x86_64                                             
+#6 30.86   perl-mro-1.23-481.el9.x86_64                                                  
+#6 30.86   perl-overload-1.31-481.el9.noarch                                             
+#6 30.86   perl-overloading-0.02-481.el9.noarch                                          
+#6 30.86   perl-parent-1:0.238-460.el9.noarch                                            
+#6 30.86   perl-podlators-1:4.14-460.el9.noarch                                          
+#6 30.86   perl-subs-1.03-481.el9.noarch                                                 
+#6 30.86   perl-vars-1.05-481.el9.noarch                                                 
+#6 30.86   pkgconf-1.7.3-10.el9.x86_64                                                   
+#6 30.86   pkgconf-m4-1.7.3-10.el9.noarch                                                
+#6 30.86   pkgconf-pkg-config-1.7.3-10.el9.x86_64                                        
+#6 30.86   postgresql16-16.3-1PGDG.rhel9.x86_64                                          
+#6 30.86   postgresql16-libs-16.3-1PGDG.rhel9.x86_64                                     
+#6 30.86   postgresql16-server-16.3-1PGDG.rhel9.x86_64                                   
+#6 30.86   protobuf-c-1.3.3-13.el9.x86_64                                                
+#6 30.86   rsync-3.2.3-19.el9.x86_64                                                     
+#6 30.86   vim-filesystem-2:8.2.2637-20.el9_1.noarch                                     
+#6 30.86 
+#6 30.86 Complete!
+#6 31.25 Found VERSION 16
+#6 31.56 Updating Subscription Management repositories.
+#6 31.56 Unable to read consumer identity
+#6 31.57 
+#6 31.57 This system is not registered with an entitlement server. You can use subscription-manager to register.
+#6 31.57 
+#6 31.59 67 files removed
+#6 DONE 33.0s
+
+#7 [3/3] COPY root /
+#7 DONE 0.1s
+
+#8 exporting to image
+#8 exporting layers
+#8 exporting layers 0.8s done
+#8 writing image sha256:9d7a363eeea4f7a6c880cc51b8919ef1608b3f9c8ec13bed52aa464bfb10920a done
+#8 naming to docker.io/library/demo:1.0 done
+#8 DONE 0.8s

@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602804a32480a052951021caf429494
 
-# PostgreSQL image for OpenShift.
+## PostgreSQL image for OpenShift.
 # Volumes:
 #  * /var/lib/pgsql/data   - Database cluster for PostgreSQL.
 # Environment:
@@ -15,8 +15,7 @@ ENV POSTGRESQL_VERSION=16 \
 
 EXPOSE 5432
 
-RUN dnf -y module install "postgresql:${POSTGRESQL_VERSION}/server" && \
-    INSTALL_PKGS="glibc-locale-source glibc-langpack-en rsync tar gettext bind-utils nss_wrapper" && \
+RUN INSTALL_PKGS="glibc-locale-source glibc-langpack-en rsync tar gettext bind-utils nss_wrapper" && \
     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     postgres -V | grep -qe "$POSTGRESQL_VERSION\." && echo "Found VERSION $POSTGRESQL_VERSION" && \

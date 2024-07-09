@@ -2,5 +2,10 @@ contentOrigin:
   repofiles:
     - ubi.repo
 packages:
-  - git
-  - jq
+  - glibc-locale-source
+  - glibc-langpack-en
+  - rsync
+  - tar
+  - gettext
+  - bind-utils
+  - nss_wrapper

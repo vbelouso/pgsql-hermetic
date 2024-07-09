@@ -20,8 +20,8 @@ fi
 
 export POSTGRESQL_LOG_DESTINATION=${POSTGRESQL_LOG_DESTINATION:-}
 
-export POSTGRESQL_RECOVERY_FILE=$HOME/openshift-custom-recovery.conf
-export POSTGRESQL_CONFIG_FILE=$HOME/openshift-custom-postgresql.conf
+export POSTGRESQL_RECOVERY_FILE=$PG_HOME/openshift-custom-recovery.conf
+export POSTGRESQL_CONFIG_FILE=$PG_HOME/openshift-custom-postgresql.conf
 
 postinitdb_actions=
 
@@ -219,13 +219,13 @@ function create_users() {
 
 function set_pgdata ()
 {
-  export PGDATA=$HOME/data/userdata
+  export PGDATA=$PG_HOME/data/userdata
   # create a subdirectory that the user owns
   mkdir -p "$PGDATA"
   # backwards compatibility case, we used to put the data here,
   # move it into our new expected location (userdata)
-  if [ -e ${HOME}/data/PG_VERSION ]; then
-    pushd "${HOME}/data"
+  if [ -e ${PG_HOME}/data/PG_VERSION ]; then
+    pushd "${PG_HOME}/data"
     # move everything except the userdata directory itself, into the userdata directory.
     mv !(userdata) "userdata"
     popd

@@ -11,21 +11,19 @@ FROM registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602
 
 ENV POSTGRESQL_VERSION=16 \
     POSTGRESQL_PREV_VERSION=15 \
-    HOME=/var/lib/pgsql
+    PG_HOME=/var/lib/pgsql
 
 EXPOSE 5432
 
-ENV PATH="/usr/pgsql-${POSTGRESQL_VERSION}/bin:${PATH}"
-
-RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x86_64/pgdg-redhat-repo-latest.noarch.rpm && \
-    INSTALL_PKGS="glibc-locale-source glibc-langpack-en rsync tar gettext bind-utils nss_wrapper postgresql${POSTGRESQL_VERSION}-server" && \
+RUN dnf -y module install "postgresql:${POSTGRESQL_VERSION}/server" && \
+    INSTALL_PKGS="glibc-locale-source glibc-langpack-en rsync tar gettext bind-utils nss_wrapper" && \
     dnf install -y --setopt=tsflags=nodocs $INSTALL_PKGS && \
     rpm -V $INSTALL_PKGS && \
     postgres -V | grep -qe "$POSTGRESQL_VERSION\." && echo "Found VERSION $POSTGRESQL_VERSION" && \
     dnf -y clean all --enablerepo='*' && \
     localedef -f UTF-8 -i en_US en_US.UTF-8 && \
-    mkdir -p /var/lib/pgsql/data && \
-    chgrp -R 0 /var/lib/pgsql /var/run/postgresql && chmod -R g=u /var/lib/pgsql /var/run/postgresql
+    mkdir -p "${PG_HOME}"/data && \
+    chgrp -R 0 "${PG_HOME}" /var/run/postgresql && chmod -R g=u "${PG_HOME}" /var/run/postgresql
 
 ENV LANG=en_US.UTF-8 \
     CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/postgresql

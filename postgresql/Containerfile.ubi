@@ -30,7 +30,7 @@ RUN dnf install -y https://download.postgresql.org/pub/repos/yum/reporpms/EL-9-x
 ENV LANG=en_US.UTF-8 \
     CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/postgresql
 
-RUN ls -R /workspace
+RUN ls -lah /
 
 COPY root /
 

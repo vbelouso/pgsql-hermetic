@@ -1,6 +1,13 @@
 contentOrigin:
   repofiles:
     - ubi.repo
+    - redhat.repo
 packages:
-  - git
-  - jq
+  - bind-utils
+  - gettext
+  - glibc-langpack-en
+  - glibc-locale-source
+  - nss_wrapper
+  - postgresql-server.x86_64
+  - rsync
+  - tar

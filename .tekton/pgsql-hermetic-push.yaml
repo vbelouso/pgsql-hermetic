@@ -190,6 +190,12 @@ spec:
         value: $(params.prefetch-input)
       - name: dev-package-managers
         value: "true"
+      # - name: caTrustConfigMapName
+      #   value: "cdn-ca"
+      # - name: caTrustConfigMapKey
+      #   value: "ca-bundle.crt"
+      - name: "log-level"
+        value: "debug"
       runAfter:
       - clone-repository
       taskRef:

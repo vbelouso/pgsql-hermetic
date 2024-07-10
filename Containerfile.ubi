@@ -1,6 +1,6 @@
 FROM registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602804a32480a052951021caf429494
 
-# Volumes:
+## Volumes:
 #  * /var/lib/pgsql/data   - Database cluster for PostgreSQL.
 # Environment:
 #  * $POSTGRESQL_USER     - Database user name.

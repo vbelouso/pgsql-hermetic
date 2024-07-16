@@ -25,10 +25,10 @@ spec:
     value: quay.io/redhat-user-workloads/vbelouso-tenant/pgsql-hermetic/pgsql-hermetic:{{revision}}
   - name: dockerfile
     value: Containerfile.ubi
-  - name: hermetic
-    value: "true"
-  - name: prefetch-input
-    value: rpm
+  # - name: hermetic
+  #   value: "true"
+  # - name: prefetch-input
+  #   value: rpm
   pipelineSpec:
     finally:
     - name: show-sbom

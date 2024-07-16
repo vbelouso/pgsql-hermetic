@@ -28,10 +28,10 @@ spec:
     value: 5d
   - name: dockerfile
     value: Containerfile.ubi
-  - name: hermetic
-    value: "true"
-  - name: prefetch-input
-    value: rpm
+  # - name: hermetic
+  #   value: "true"
+  # - name: prefetch-input
+  #   value: rpm
   pipelineSpec:
     finally:
     - name: show-sbom

@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi9@sha256:ed84f34cd929ea6b0c247b6daef54dd79602804a32480a052951021caf429494
+FROM registry.access.redhat.com/ubi9@sha256:9e6a89ab2a9224712391c77fab2ab01009e387aff42854826427aaf18b98b1ff
 
 ## Volumes:
 #  * /var/lib/pgsql/data   - Database cluster for PostgreSQL.
